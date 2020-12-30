@@ -5,7 +5,9 @@ Matching utility between local legal form abbreviations and the corresponding GL
 ### Usages:
 #### Convert a given legal form to an elf-code
 ```
-ElvesMatcher.jar --legislation DE --convert GmbH  
+usage: ElvesMatcher.jar
+    --convert <GmbH>     local abbreviation to convert
+    --legislation <DE>   legislation of the abbreviation  
 2HBR
 ```
 #### Update definition
