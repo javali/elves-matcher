@@ -1,14 +1,20 @@
-package com.javali.gleif.elvesmatcher;
+package com.javali.gleif.elvesmatcher.util;
+
+import com.javali.gleif.elvesmatcher.model.ELF;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author javali on 13.12.2020.
  */
+@Service
 public class Converter {
 
     private Reader reader;
 
-    public Converter() {
-        this.reader = new Reader();
+    @Autowired
+    public Converter(Reader reader) {
+        this.reader = reader;
     }
 
     /**
@@ -20,17 +26,21 @@ public class Converter {
      */
     public String convert(String countryCode, String legalForm) {
 
-        ELF foundElfCode = reader.getElfCodes().stream()
+        ELF foundElfCode = getElf(countryCode, legalForm);
+
+        // TODO Read serialized object
+
+        return foundElfCode.getElfcode();
+    }
+
+    public ELF getElf(String countryCode, String legalForm) {
+        return reader.getElfCodes().stream()
                 .filter(elfCode -> elfCode.getCountryCode() != null)
                 .filter(elfCode -> elfCode.getAbbreviationsLocalLanguage() != null)
                 .filter(elfCode -> countryCode.equals(elfCode.getCountryCode()))
                 .filter(elfCode -> elfCode.getAbbreviationsLocalLanguage().contains(legalForm))
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
-
-        // TODO Read serialized object
-
-        return foundElfCode.getElfcode();
     }
 
 }
