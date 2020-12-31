@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class Converter {
 
-    private Reader reader;
+    private final Reader reader;
 
     @Autowired
     public Converter(Reader reader) {
@@ -25,14 +25,17 @@ public class Converter {
      * @return the ELF-code.
      */
     public String convert(String countryCode, String legalForm) {
-
         ELF foundElfCode = getElf(countryCode, legalForm);
-
-        // TODO Read serialized object
-
         return foundElfCode.getElfcode();
     }
 
+    /**
+     * Get an ELF object.
+     *
+     * @param countryCode the country code
+     * @param legalForm the legal form abbreviation
+     * @return the {@link ELF}
+     */
     public ELF getElf(String countryCode, String legalForm) {
         return reader.getElfCodes().stream()
                 .filter(elfCode -> elfCode.getCountryCode() != null)
