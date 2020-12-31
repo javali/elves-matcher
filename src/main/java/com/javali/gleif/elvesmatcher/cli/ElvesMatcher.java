@@ -1,5 +1,7 @@
-package com.javali.gleif.elvesmatcher;
+package com.javali.gleif.elvesmatcher.cli;
 
+import com.javali.gleif.elvesmatcher.util.Converter;
+import com.javali.gleif.elvesmatcher.util.Reader;
 import org.apache.commons.cli.*;
 
 import java.util.HashMap;
@@ -8,7 +10,7 @@ import java.util.Map;
 /** @author javali on 30.12.2020. */
 public class ElvesMatcher {
 
-  private static final Converter converter = new Converter();
+  private static final Converter converter = new Converter(new Reader());
   public static final String LEGISLATION = "legislation";
   public static final String CONVERT = "convert";
 

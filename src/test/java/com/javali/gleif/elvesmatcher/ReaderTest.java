@@ -1,6 +1,8 @@
 package com.javali.gleif.elvesmatcher;
 
 
+import com.javali.gleif.elvesmatcher.model.ELF;
+import com.javali.gleif.elvesmatcher.util.Reader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package com.javali.gleif.elvesmatcher;
+package com.javali.gleif.elvesmatcher.model;
 
 import java.util.Date;
 import java.util.List;
